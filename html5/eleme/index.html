@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>饿了么商家</title>
+    <link rel="stylesheet" href="./common.css">
+</head>
+
+<body>
+    <div id="root">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="content-wrapper">
+                <div class="avatar">
+                    <img width="64" height="64" :src="seller.avatar" alt="" id="avatar">
+                </div>
+                <div class="content">
+                    <div class="title">
+                        <span class="brand"></span>
+                        <span class="name">{{seller.name}}</span>
+                    </div>
+                    <div class="description">
+                        {{seller.description}} {{seller.deliveryTime}}分钟送达
+                    </div>
+                    <div class="support" v-if="seller.supports">
+                        <span class="icon decrease"></span>
+                        <span class="text">{{seller.supports[0].description}}</span>
+                    </div>
+                    <div class="support-count" v-if="seller.supports">
+                        <span class="count">{{seller.supports.length}}个</span>
+                        <i class="icon-keyboard_arrow_right"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- <div>{{message}}</div> -->
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 页面 -->
+
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                // avatar: "http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg",
+                // message: 'hello world'
+                seller: {}
+            },
+            // onload 加载函数
+            mounted() {
+                //     setTimeout(() => {
+                //         this.avatar = 'http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg';
+                //     }, 2000)
+                //     this.avatar = ''
+                // }
+
+                fetch('http://localhost:3000/data')
+                    .then(data => data.json())
+                    .then(data => {
+                        this.seller = data;
+                        // this.setDate({
+
+                        // })
+                        // 第三种
+                        // console.log(data);
+                        // document.getElementById('avatar')
+                        //     .src = data.avatar
+                    })
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>
