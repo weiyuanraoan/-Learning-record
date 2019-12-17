@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单例模式</title>
+    <style>
+        #modal {
+            height: 200px;
+            width: 200px;
+            line-height: 200px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="open">打开弹框</button>
+    <button id="close">关闭弹窗</button>
+    <script>
+        document.getElementById('open').addEventListener('click', () => {
+            //   alert('hello')
+            // 做一个弹窗
+            // 90%的网站是不登录的  不用去加载login
+            // 点击后再动态加载
+            const modal = document.createElement('div');
+            modal.innerHTML = "我是一个全局的modal";
+            modal.id = 'modal';
+            document.body.appendChild(modal);
+        })
+        document.getElementById('close').addEventListener('click', () => {
+            //   alert('hello')
+            // 做一个弹窗
+            // 90%的网站是不登录的  不用去加载login
+            // 点击后再动态加载
+            document.getElementById('modal').style.display = 'none';
+        })
+    </script>
+</body>
+
+</html>
