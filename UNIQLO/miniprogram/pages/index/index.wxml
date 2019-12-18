@@ -1,0 +1,12 @@
+<view 
+wx:for="{{array}}"
+wx:key="{{id}}">
+
+    索引:{{index}}
+    姓名:{{item.msg}}
+    性别:{{item.sex}}
+</view>
+
+  
+
+  
