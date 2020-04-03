@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<body>
+    <!-- 事件监视器 v-on -->
+    <div id="app-5">
+        <p>{{message}}</p>
+        <button v-on:click="fn">反转消息</button>
+    </div>
+    <script>
+        const app5 = new Vue({
+            el: '#app-5',
+            data: {
+                message: 'Hello Vuejs!'
+            },
+            methods: {
+                fn: function() {
+                    this.message = this.message.split('').reverse().join('')
+                        // spilt():分割字符串
+                        // reserve():元素位置颠倒
+                        // jion():把数组中的所有元素放入一个字符串。
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
